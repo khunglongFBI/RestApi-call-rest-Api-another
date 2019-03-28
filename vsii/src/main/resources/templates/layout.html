@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Spring hiendz</title>
+
+    <link href="../static/images/logo.png" th:href="@{/images/logo.png}"
+          rel="shortcut icon" />
+
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Custom style -->
+    <link href="../static/css/style.css" th:href="@{/css/style.css}"
+          rel="stylesheet" />
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+</head>
+<body>
+<nav th:fragment="header"
+     class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" th:href="@{/}">Home</a>
+            <a class="navbar-brand" th:href="@{/admin}">Admin</a>
+            <a class="navbar-brand" th:href="@{/sup}">Sup</a>
+            <a class="navbar-brand" th:href="@{/teller}">Teller</a>
+            <a th:href="@{/user}" th:if="${#request.userPrincipal != null}" th:text="${#request.userPrincipal.name}"></a>
+            | &nbsp;
+
+            <a th:if="${#request.userPrincipal == null}" th:href="@{/login}" class="navbar-nav">Login</a>
+            | &nbsp;
+
+            <a th:if="${#request.userPrincipal != null}" th:href="@{/logout}" th:align="left" class="navbar-nav">Logout</a>
+
+        </div>
+    </div>
+</nav>
+
+<h1>Main content</h1>
+
+<footer th:fragment="footer" class="container" th:align="center">
+    &copy; 2019 Hiendz
+</footer>
+</body>
+</html>
